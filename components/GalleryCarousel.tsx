@@ -19,6 +19,7 @@ export default function GalleryCarousel({ productType }: GalleryCarouselProps) {
       "/images/gallery/Kanha Tandoor (9).png",
       "/images/gallery/Kanha Tandoor (1).png",
       "/images/gallery/Kanha Tandoor (2).png",
+      "/images/gallery/Kanha Tandoor (9).png",
       "/images/gallery/Kanha Tandoor (3).png",
       "/images/gallery/Kanha Tandoor (4).png",
       "/images/gallery/Kanha Tandoor (5).png",
