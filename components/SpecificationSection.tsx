@@ -2,21 +2,24 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Ruler, Gauge, Thermometer, Weight, Sparkles } from "lucide-react";
+import { Ruler, Gauge, Thermometer, Weight, Sparkles, Flame, Users } from "lucide-react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 
 interface SpecificationSectionProps {
-  productType: "steel" | "clay";
+  productType: "steel" | "clay" | "mild-steel-square";
 }
 
 export default function SpecificationSection({ productType }: SpecificationSectionProps) {
-  const specs =
-    productType === "steel"
-      ? {
+  const getSpecs = () => {
+    switch (productType) {
+      case "steel":
+        return {
           dimensions: { height: "34-30 inches", diameter: "18 inches", weight: "45 kg" },
           material: "304 Grade Stainless Steel",
           capacity: "20-25 rotis per batch",
           temperature: "Up to 500°C",
+          title: "Stainless Steel Tandoor",
+          image: "/steel-tandoor-meas.png",
           features: [
             "Corrosion resistant outer shell",
             "Clay pot inner lining for authentic taste",
@@ -27,12 +30,15 @@ export default function SpecificationSection({ productType }: SpecificationSecti
             "Powder-coated exterior finish",
             "Professional grade construction",
           ],
-        }
-      : {
+        };
+      case "clay":
+        return {
           dimensions: { height: "30-34 inches", diameter: "18 inches", weight: "60 kg" },
           material: "Premium Quality Clay",
           capacity: "25-30 rotis per batch",
           temperature: "Up to 550°C",
+          title: "Clay Tandoor Classic",
+          image: "/clay-tandoor-meas.png",
           features: [
             "100% handcrafted authentic clay body",
             "Natural superior heat retention",
@@ -44,6 +50,55 @@ export default function SpecificationSection({ productType }: SpecificationSecti
             "Environmentally friendly cooking",
           ],
         };
+      case "mild-steel-square":
+        return {
+          dimensions: { height: "36 inches", size: "30 x 30 inches", weight: "225 kg" },
+          material: "Mild Steel with SS Top",
+          capacity: "200 rotis per hour",
+          temperature: "Up to 250°C",
+          title: "SS Top MS Body Tandoor",
+          image: "/mild-steel-square-tandoor-meas.png",
+          features: [
+            "SS top cover with MS body construction",
+            "Clay inner lining with insulation",
+            "Square design for space efficiency",
+            "4 wheels for easy mobility",
+            "Dual fuel: Charcoal & Gas compatible",
+            "Includes gas burner and MS hot plate",
+            "1.5mm wall thickness for durability",
+            "Perfect for restaurants, hotels & dhabas",
+          ],
+        };
+    }
+  };
+
+  const specs = getSpecs();
+
+  // Get spec items based on product type
+  const getSpecItems = () => {
+    const baseSpecs = [
+      { icon: Thermometer, label: "Max Temp", value: specs.temperature },
+      { icon: Weight, label: "Weight", value: specs.dimensions.weight },
+    ];
+
+    if (productType === "mild-steel-square") {
+      return [
+        { icon: Ruler, label: "Height", value: specs.dimensions.height },
+        { icon: Gauge, label: "Size", value: specs.dimensions.size },
+        ...baseSpecs,
+        { icon: Users, label: "Capacity", value: specs.capacity },
+        { icon: Flame, label: "Fuel Type", value: "Charcoal/Gas" },
+      ];
+    } else {
+      return [
+        { icon: Ruler, label: "Height", value: specs.dimensions.height },
+        { icon: Gauge, label: "Diameter", value: specs.dimensions.diameter },
+        ...baseSpecs,
+      ];
+    }
+  };
+
+  const specItems = getSpecItems();
 
   return (
     <section className="py-20 sm:py-32 bg-gradient-to-b from-black via-orange-950/10 to-black relative overflow-hidden">
@@ -85,7 +140,7 @@ export default function SpecificationSection({ productType }: SpecificationSecti
                 <div>
                   <CardItem translateZ="50" className="text-2xl font-bold text-white mb-2">
                     <Sparkles className="inline w-6 h-6 text-orange-500 mr-2" />
-                    {productType === "steel" ? "Stainless Steel Tandoor" : "Clay Tandoor Classic"}
+                    {specs.title}
                   </CardItem>
 
                   <CardItem translateZ="60" as="p" className="text-gray-400 text-sm mb-6">
@@ -97,12 +152,8 @@ export default function SpecificationSection({ productType }: SpecificationSecti
                 <CardItem translateZ="120" className="flex-1 w-full">
                   <div className="relative w-full h-full min-h-[400px]">
                     <Image
-                      src={
-                        productType === "steel"
-                          ? "/steel-tandoor-meas.png"
-                          : "/clay-tandoor-meas.png"
-                      }
-                      alt={`${productType} tandoor`}
+                      src={specs.image}
+                      alt={`${specs.title}`}
                       fill
                       className="object-contain rounded-2xl group-hover/card:scale-105 transition-all duration-500"
                     />
@@ -139,22 +190,28 @@ export default function SpecificationSection({ productType }: SpecificationSecti
             viewport={{ once: true }}
           >
             {/* Specs Grid */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              {[ 
-                { icon: Ruler, label: "Height", value: specs.dimensions.height },
-                { icon: Gauge, label: "Diameter", value: specs.dimensions.diameter },
-                { icon: Thermometer, label: "Max Temp", value: specs.temperature },
-                { icon: Weight, label: "Weight", value: specs.dimensions.weight },
-              ].map((item, i) => {
+            <div className={`grid ${productType === "mild-steel-square" ? "grid-cols-2 md:grid-cols-3" : "grid-cols-2"} gap-4 mb-8`}>
+              {specItems.map((item, i) => {
                 const Icon = item.icon;
                 return (
                   <div key={i} className="p-6 rounded-2xl border border-orange-500/30 hover:scale-105 transition bg-white/5 backdrop-blur">
                     <Icon className="w-8 h-8 text-orange-500 mb-3" />
                     <p className="text-sm text-gray-400">{item.label}</p>
-                    <p className="text-2xl font-bold text-white">{item.value}</p>
+                    <p className="text-xl md:text-2xl font-bold text-white">{item.value}</p>
                   </div>
                 );
               })}
+            </div>
+
+            {/* Material Badge */}
+            <div className="p-4 rounded-2xl border border-orange-500/30 bg-gradient-to-r from-orange-500/10 to-orange-600/10 backdrop-blur mb-8">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm text-gray-400 mb-1">Material</p>
+                  <p className="text-xl font-bold text-white">{specs.material}</p>
+                </div>
+                <Sparkles className="w-10 h-10 text-orange-500" />
+              </div>
             </div>
 
             {/* Features */}

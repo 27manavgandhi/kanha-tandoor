@@ -7,18 +7,40 @@ import SpecificationSection from "@/components/SpecificationSection";
 import GalleryCarousel from "@/components/GalleryCarousel";
 import CTASection from "@/components/CTASection";
 
-type ProductType = "steel" | "clay";
+type ProductType = "steel" | "clay" | "mild-steel-square";
 
 export default function Home() {
   const [currentProduct, setCurrentProduct] = useState<ProductType>("steel");
 
   const handleToggle = () => {
-    setCurrentProduct((prev) => (prev === "steel" ? "clay" : "steel"));
+    setCurrentProduct((prev) => {
+      // Cycle through all three products
+      if (prev === "steel") return "clay";
+      if (prev === "clay") return "mild-steel-square";
+      return "steel";
+    });
+  };
+
+  // Get total frames for each product type
+  const getTotalFrames = () => {
+    switch (currentProduct) {
+      case "steel":
+        return 17;
+      case "clay":
+        return 17;
+      case "mild-steel-square":
+        return 17; // Update this number based on actual frame count
+      default:
+        return 17;
+    }
   };
 
   return (
     <main className="min-h-screen">
-      <ScrollSequence productType={currentProduct} totalFrames={17} />
+      <ScrollSequence 
+        productType={currentProduct} 
+        totalFrames={getTotalFrames()} 
+      />
 
       <ProductToggle
         currentProduct={currentProduct}
@@ -27,7 +49,6 @@ export default function Home() {
 
       <SpecificationSection productType={currentProduct} />
 
-      {/* ✅ Fixed: removed images prop */}
       <GalleryCarousel productType={currentProduct} />
 
       <CTASection />
