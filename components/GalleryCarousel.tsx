@@ -1,5 +1,3 @@
-
-
 "use client";
 
 import { useState, useEffect, useMemo } from "react";
@@ -8,10 +6,12 @@ import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface GalleryCarouselProps {
-  productType: "steel" | "clay";
+  productType: "steel" | "clay" | "mild-steel-square";
 }
 
-export default function GalleryCarousel({ productType }: GalleryCarouselProps) {
+export default function GalleryCarousel({
+  productType,
+}: GalleryCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const images = useMemo(
@@ -21,7 +21,6 @@ export default function GalleryCarousel({ productType }: GalleryCarouselProps) {
       "/images/gallery/Kanha Tandoor (11).png",
       "/images/gallery/Kanha Tandoor (1).png",
       "/images/gallery/Kanha Tandoor (2).png",
-      "/images/gallery/Kanha Tandoor (9).png",
       "/images/gallery/Kanha Tandoor (3).png",
       "/images/gallery/Kanha Tandoor (4).png",
       "/images/gallery/Kanha Tandoor (5).png",
@@ -40,10 +39,17 @@ export default function GalleryCarousel({ productType }: GalleryCarouselProps) {
     }, 4000);
 
     return () => clearInterval(timer);
-  }, [images.length]);
+  }, [images]);
 
-  const next = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const prev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  const prev = () => {
+    setCurrentIndex(
+      (prev) => (prev - 1 + images.length) % images.length
+    );
+  };
 
   return (
     <section className="py-16 sm:py-20 bg-tandoor-dark">
@@ -59,7 +65,6 @@ export default function GalleryCarousel({ productType }: GalleryCarouselProps) {
         </motion.h2>
 
         <div className="relative max-w-5xl mx-auto">
-          {/* 🔥 FIXED CONTAINER */}
           <div className="relative h-64 sm:h-96 md:h-[500px] overflow-hidden rounded-2xl bg-black shadow-2xl">
             <AnimatePresence mode="wait">
               <motion.div
@@ -75,37 +80,43 @@ export default function GalleryCarousel({ productType }: GalleryCarouselProps) {
                   alt={`${productType} tandoor ${currentIndex + 1}`}
                   fill
                   priority
-                  className="object-cover object-center"
                   sizes="100vw"
+                  className="object-cover object-center"
                   unoptimized
                 />
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Arrows */}
           <button
+            type="button"
             onClick={prev}
+            aria-label="Previous image"
             className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 glass-effect p-2 sm:p-3 rounded-full hover:bg-black/70 transition z-10"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </button>
 
           <button
+            type="button"
             onClick={next}
+            aria-label="Next image"
             className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 glass-effect p-2 sm:p-3 rounded-full hover:bg-black/70 transition z-10"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
           </button>
 
-          {/* Dots */}
           <div className="flex justify-center space-x-2 mt-6">
             {images.map((_, index) => (
               <button
                 key={index}
+                type="button"
+                aria-label={`Go to image ${index + 1}`}
                 onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? "bg-tandoor-orange w-8" : "bg-gray-600 w-2"
+                  index === currentIndex
+                    ? "bg-tandoor-orange w-8"
+                    : "bg-gray-600 w-2"
                 }`}
               />
             ))}
