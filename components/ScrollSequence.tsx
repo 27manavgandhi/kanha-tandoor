@@ -44,7 +44,7 @@ export default function ScrollSequence({
   );
   const ctaOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1]);
 
-  // ✅ FIXED IMAGE PATH CONFIG
+  // ✅ MATCHES YOUR FOLDER STRUCTURE EXACTLY
   const productConfig = {
     steel: {
       folder: "steel",
@@ -55,8 +55,8 @@ export default function ScrollSequence({
       name: "Kanha Clay Tandoor",
     },
     "mild-steel-square": {
-      folder: "mild steel square",
-      name: "Kanha MS Square Tandoor", // ✅ FIXED
+      folder: "mild steel square", // EXACT MATCH
+      name: "Kanha MS Square Tandoor",
     },
   };
 
@@ -69,7 +69,12 @@ export default function ScrollSequence({
 
       for (let i = 1; i <= totalFrames; i++) {
         const img = new Image();
-        img.src = `/frames/${config.folder}/${config.name} (${i}).jpg`;
+
+        // ✅ SAFE URL ENCODING
+        const fileName = `${config.name} (${i}).jpg`;
+        const encodedFileName = encodeURIComponent(fileName);
+
+        img.src = `/frames/${config.folder}/${encodedFileName}`;
 
         img.onload = img.onerror = () => {
           loadedCount++;
@@ -154,7 +159,8 @@ export default function ScrollSequence({
   const content = {
     steel: {
       title: "Stainless Steel Tandoor",
-      subtitle: "Premium Quality • Authentic Taste • Trusted Nationwide",
+      subtitle:
+        "Premium Quality • Authentic Taste • Trusted Nationwide",
       feature1: {
         title: "✨ Precision Engineered",
         description:
@@ -175,7 +181,8 @@ export default function ScrollSequence({
       },
       feature2: {
         title: "🔥 Natural Heat Retention",
-        description: "Perfect for authentic smoky flavor",
+        description:
+          "Perfect for authentic smoky flavor",
       },
     },
     "mild-steel-square": {
@@ -183,11 +190,13 @@ export default function ScrollSequence({
       subtitle: "Durable • Efficient • Commercial Grade",
       feature1: {
         title: "✨ Heavy Duty Build",
-        description: "Built for commercial kitchen performance",
+        description:
+          "Built for commercial kitchen performance",
       },
       feature2: {
         title: "🔥 Uniform Heating",
-        description: "Even heat distribution across the surface",
+        description:
+          "Even heat distribution across the surface",
       },
     },
   }[productType];
@@ -212,11 +221,35 @@ export default function ScrollSequence({
             style={{ opacity: heroOpacity }}
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
           >
-            <h1 className="text-6xl font-bold text-white">
+            <h1 className="text-6xl font-bold bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
               {content.title}
             </h1>
             <p className="text-xl text-gray-300 mt-4">
               {content.subtitle}
+            </p>
+          </motion.div>
+
+          <motion.div
+            style={{ opacity: feature1Opacity }}
+            className="absolute top-[60%] left-1/2 -translate-x-1/2 text-center max-w-xl"
+          >
+            <h2 className="text-3xl font-bold text-orange-400">
+              {content.feature1.title}
+            </h2>
+            <p className="text-gray-300 mt-3">
+              {content.feature1.description}
+            </p>
+          </motion.div>
+
+          <motion.div
+            style={{ opacity: feature2Opacity }}
+            className="absolute top-[60%] left-1/2 -translate-x-1/2 text-center max-w-xl"
+          >
+            <h2 className="text-3xl font-bold text-orange-400">
+              {content.feature2.title}
+            </h2>
+            <p className="text-gray-300 mt-3">
+              {content.feature2.description}
             </p>
           </motion.div>
 
