@@ -13,7 +13,7 @@ export default function SpecificationSection({ productType }: SpecificationSecti
   const specs =
     productType === "steel"
       ? {
-          dimensions: { height: "36 inches", diameter: "18 inches", weight: "45 kg" },
+          dimensions: { height: "34-30 inches", diameter: "18 inches", weight: "45 kg" },
           material: "304 Grade Stainless Steel",
           capacity: "20-25 rotis per batch",
           temperature: "Up to 500°C",
@@ -29,7 +29,7 @@ export default function SpecificationSection({ productType }: SpecificationSecti
           ],
         }
       : {
-          dimensions: { height: "40 inches", diameter: "20 inches", weight: "60 kg" },
+          dimensions: { height: "30-34 inches", diameter: "18 inches", weight: "60 kg" },
           material: "Premium Quality Clay",
           capacity: "25-30 rotis per batch",
           temperature: "Up to 550°C",
