@@ -85,7 +85,7 @@ export default function SpecificationSection({ productType }: SpecificationSecti
                 <div>
                   <CardItem translateZ="50" className="text-2xl font-bold text-white mb-2">
                     <Sparkles className="inline w-6 h-6 text-orange-500 mr-2" />
-                    {productType === "steel" ? "Steel Tandoor Pro" : "Clay Tandoor Classic"}
+                    {productType === "steel" ? "Stainless Steel Tandoor" : "Clay Tandoor Classic"}
                   </CardItem>
 
                   <CardItem translateZ="60" as="p" className="text-gray-400 text-sm mb-6">

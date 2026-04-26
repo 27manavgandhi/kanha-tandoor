@@ -16,6 +16,7 @@ export default function GalleryCarousel({ productType }: GalleryCarouselProps) {
 
   const images = useMemo(
     () => [
+      "/images/gallery/Kanha Tandoor (9).png",
       "/images/gallery/Kanha Tandoor (1).png",
       "/images/gallery/Kanha Tandoor (2).png",
       "/images/gallery/Kanha Tandoor (3).png",

@@ -94,10 +94,10 @@ export default function Footer() {
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-orange-500" />
                 <a
-                  href="tel:+919911858173"
+                  href="tel:+919643534996"
                   className="hover:text-orange-500 transition"
                 >
-                  +91 9911858173
+                  +91 9643534996
                 </a>
               </li>
 
@@ -114,13 +114,28 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* BOTTOM */}
+        {/* MAIN FOOTER BOTTOM */}
         <div className="border-t border-gray-800 mt-10 pt-6 text-center text-gray-500 text-sm">
           <p>
             © {new Date().getFullYear()} Kanha Tandoor Manufacture. All rights reserved.
           </p>
           <p className="mt-2">
             Proudly serving Delhi, Delhi NCR & Pan India
+          </p>
+        </div>
+
+        {/* BUILT BY SECTION */}
+        <div className="mt-4 text-center text-xs text-gray-600">
+          <p>
+            Website built by{" "}
+            <a
+              href="https://trilokixinnovation.framer.website/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 hover:text-orange-400 transition font-medium"
+            >
+              TrilokiX Innovation
+            </a>
           </p>
         </div>
 
