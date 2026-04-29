@@ -1,4 +1,4 @@
-# 🔥 Kanha Tandoor Manufacture - Premium Tandoor Website
+# Kanha Tandoor Manufacture - Premium Tandoor Website
 
 A modern, award-winning website for Kanha Tandoor Manufacture featuring stunning 3D animations, scroll-based interactions, and a premium UI built with Next.js 14, TypeScript, and Tailwind CSS.
 
