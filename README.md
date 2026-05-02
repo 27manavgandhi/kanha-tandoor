@@ -425,6 +425,6 @@ This project is proprietary and confidential.
 
 ---
 
-**Made with ❤️ for Kanha Tandoor Manufacture**
+**Made with ❤️ for Kanha Tandoor Manufacture by Triloki X Innovation**
 
 For support, please contact: 27manavgandhi@gmail.com
