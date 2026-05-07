@@ -63,7 +63,7 @@ export default function AboutPage() {
                     <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl blur-md opacity-50"></div>
                     <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-orange-500/50">
                       <Image
-                        src="/images/om-shankar.jpg"
+                        src="/images/omshankar.jpg"
                         alt="Om Shankar - Founder of Kanha Tandoor"
                         fill
                         className="object-cover"
