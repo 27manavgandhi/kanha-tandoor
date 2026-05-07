@@ -132,7 +132,7 @@ export default function RootLayout({
         <meta name="geo.placename" content="Delhi" />
         <meta name="geo.position" content="28.7041;77.1025" />
         <meta name="ICBM" content="28.7041, 77.1025" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/images/l2.png" />
         
         {/* Schema.org markup for Google */}
         <script
