@@ -38,7 +38,7 @@ export default function ContactPage() {
             {[
               { icon: MapPin, text: "Gali No.8, Swroop Nagar, Delhi-110042" },
               { icon: Phone, text: "+91 8375894010" },
-              { icon: Mail, text: "Omshankartandoor@gmail.com" },
+              { icon: Mail, text: "Omshankartandoor1@gmail.com" },
               { icon: Clock, text: "9AM - 7PM" },
             ].map((item, i) => {
               const Icon = item.icon;
