@@ -85,7 +85,7 @@ export default function ContactPage() {
           {/* FORM */}
           <div className="rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 backdrop-blur-xl">
             <iframe
-              src="https://docs.google.com/forms/d/e/1FAIpQLScIgpBoccNziYRYF2jhODfyFxsB6caf8zRMEmiD2rM7opI2gg/viewform?embedded=true"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSd6Oqfa7bmjhdOYMT8TmQzxXIANoFuM-hCNuHYzgMmIb1ybpA/viewform?embedded=true"
               className="w-full h-[600px]"
               loading="lazy"
             >
@@ -99,7 +99,7 @@ export default function ContactPage() {
       <div className="w-full px-6 pb-20">
         <div className="w-full h-[400px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
           <iframe
-            src="https://www.google.com/maps?q=Swroop+Nagar+Delhi&output=embed"
+            src="https://www.google.com/maps?q=Kanha+Tandoor+Delhi&output=embed"
             className="w-full h-full"
             loading="lazy"
           />
