@@ -37,7 +37,7 @@ export default function AboutPage() {
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             
-            {/* Story */}
+            {/* Story with Owner Image */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -49,6 +49,38 @@ export default function AboutPage() {
                 <Sparkles className="w-8 h-8 text-orange-500 mr-3" />
                 Our Story
               </h2>
+
+              {/* Owner Image Card */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                viewport={{ once: true }}
+                className="glass-effect p-6 rounded-2xl border border-orange-500/30 hover:border-orange-500/50 transition-all"
+              >
+                <div className="flex flex-col sm:flex-row items-center gap-6">
+                  <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl blur-md opacity-50"></div>
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-orange-500/50">
+                      <Image
+                        src="/images/om-shankar.jpg"
+                        alt="Om Shankar - Founder of Kanha Tandoor"
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 128px, 160px"
+                        priority
+                      />
+                    </div>
+                  </div>
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-2xl sm:text-3xl font-bold gradient-text mb-2">
+                      Om Shankar
+                    </h3>
+                    <p className="text-orange-400 font-semibold mb-1">Founder & Master Craftsman</p>
+                    <p className="text-gray-400 text-sm">Established 2022</p>
+                  </div>
+                </div>
+              </motion.div>
 
               <div className="space-y-5 text-gray-300 text-base sm:text-lg leading-relaxed">
                 <p className="glass-effect p-6 rounded-2xl border border-orange-500/20">
