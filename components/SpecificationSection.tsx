@@ -165,19 +165,19 @@ export default function SpecificationSection({ productType }: SpecificationSecti
                   </CardItem>
 
                   {/* CTA */}
-                  <div className="flex justify-between items-center mt-6">
+                  <div className="flex justify-between items-center mt-6 gap-3">
                     <CardItem
                       translateZ={20}
                       as="button"
                       onClick={() => setIsCartOpen(true)}
-                      className="px-6 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 text-white text-sm font-bold hover:scale-105 active:scale-95 transition cursor-pointer"
+                      className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 text-white text-sm font-bold hover:scale-105 active:scale-95 transition cursor-pointer shadow-lg shadow-orange-500/30"
                     >
                       Add to Cart →
                     </CardItem>
 
                     <CardItem
                       translateZ={20}
-                      className="px-6 py-3 rounded-xl bg-white/10 backdrop-blur text-white text-sm"
+                      className="px-6 py-3 rounded-xl bg-white/10 backdrop-blur text-white text-sm font-semibold"
                     >
                       ₹ Best Price
                     </CardItem>
